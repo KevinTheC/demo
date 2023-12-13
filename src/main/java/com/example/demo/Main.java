@@ -47,22 +47,24 @@ public class Main {
         } catch (Exception e) {e.printStackTrace();}}));
 
         server.createContext("/api",(exchange->{
-			System.out.println("rare debug flag");
+			System.out.println("f1");
             exchange.getResponseHeaders().set("Content-Type", "text/plain");
-			exchange.getRequestHeaders();
 			Map<String, String> queryParams = getQueryParams(exchange.getRequestURI().getQuery());
+			System.out.println("f2");
 			String response = "";
 			for (Map.Entry<String, String> entry : queryParams.entrySet()){
 				try {
 					response += getSQL(entry.getValue());
 				} catch (SQLException e) {
-					throw new RuntimeException(e);
+					e.printStackTrace();
 				}
 			}
+			System.out.println("f3");
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
             		os.write(response.getBytes());
-        } catch (Exception e) {e.printStackTrace();}}));
+        } catch (Exception e) {e.printStackTrace();}
+			System.out.println("f4");}));
         server.start();
         Thread.sleep(30000);
         System.out.println("Killed");
