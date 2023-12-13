@@ -23,12 +23,6 @@ public class Main {
 	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException, CertificateException {
 		// JDBC URL, username, and password of the MySQL server
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return;
-		}
 		HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             Headers headers = exchange.getResponseHeaders();
@@ -84,7 +78,7 @@ public class Main {
             		os.write(response.getBytes());
         } catch (Exception e) {e.printStackTrace();}}));
         server.start();
-        Thread.sleep(30000);
+        Thread.sleep(36000000);
         System.out.println("Killed");
         System.exit(1337);
 	}
