@@ -14,9 +14,11 @@ public class Main {
         System.out.println("Started");
         HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
+            System.out.println("Received");
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
             os.write(Files.readAllBytes(new File("home.html").toPath()));
+            System.out.println("Exchanged");
         }}));
         server.createContext("/scheduleBuilder",new HomepageHandler());
         server.start();
