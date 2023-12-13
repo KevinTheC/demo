@@ -18,6 +18,7 @@ public class Main {
 	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException, CertificateException {
         System.out.println("Started");
+        Directory
         HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             System.out.println("Received");
@@ -25,8 +26,8 @@ public class Main {
             headers.set("Content-Type", "text/html");
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
-            os.write(Files.readAllBytes(new File("home.html").toPath()));
-        } catch (Exception e) {e.printStackTrace();}}));
+            os.write(Files.readAllBytes(new File("classes/static/home.html").toPath()));
+        } catch (Exception e) {}}));
         server.start();
         System.out.println("Server Started");
         Thread.sleep(10000);
