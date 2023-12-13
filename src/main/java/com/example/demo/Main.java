@@ -54,7 +54,7 @@ public class Main {
 			String response = "";
 			for (Map.Entry<String, String> entry : queryParams.entrySet()){
 				try {
-					response += getSQL(entry.getValue());
+					response += getSQL(entry.getValue())+'\n';
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -84,8 +84,8 @@ public class Main {
 			// Execute a simple query
 			String sqlQuery = "SELECT * FROM classes WHERE classname = '"+matcher+"'";
 			try (ResultSet resultSet = statement.executeQuery(sqlQuery)) {
-				System.out.println(resultSet);
-				return resultSet.toString();
+				resultSet.next();
+				return resultSet.getString("crn")+resultSet.getString("classname")+resultSet.getString("begin")+resultSet.getString("ending");
 			}
 		} catch (SQLException e) {e.printStackTrace(); throw e;}
 	}

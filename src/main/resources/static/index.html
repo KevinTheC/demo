@@ -14,6 +14,9 @@
         input, button {
             margin-bottom: 10px;
         }
+        output {
+            size: 400px, 400px;
+        }
     </style>
 </head>
 <body>
@@ -36,19 +39,24 @@
 
     <!-- Output Field (Read-only) -->
     <label for="output">Output:</label>
-    <input type="text" id="output" readonly>
+    <input class="output" type="text" id="output" readonly>
 
     <!-- JavaScript to Process Inputs -->
     <script>
         function sendGetRequest() {
             // Get values from input fields
-            var input1 = encodeURIComponent(document.getElementById('input1').value);
-            var input2 = encodeURIComponent(document.getElementById('input2').value);
-            var input3 = encodeURIComponent(document.getElementById('input3').value);
-            var input4 = encodeURIComponent(document.getElementById('input4').value);
+            var input1Value = document.getElementById('input1').value;
+    var input2Value = document.getElementById('input2').value;
+    var input3Value = document.getElementById('input3').value;
+    var input4Value = document.getElementById('input4').value;
+
+    var encodedInput1 = input1Value ? encodeURIComponent(input1Value) : encodeURIComponent("null");
+    var encodedInput2 = input2Value ? encodeURIComponent(input2Value) : encodeURIComponent("null");
+    var encodedInput3 = input3Value ? encodeURIComponent(input3Value) : encodeURIComponent("null");
+    var encodedInput4 = input4Value ? encodeURIComponent(input4Value) : encodeURIComponent("null");
 
             // Construct the URL with query parameters
-            var url = `http://myapplicationforsccc-32aa1e96762d.herokuapp.com/api?input1=${input1}&input2=${input2}&input3=${input3}&input4=${input4}`;
+            var url = `http://myapplicationforsccc-32aa1e96762d.herokuapp.com/api?input1=${encodedInput1}&input2=${encodedInput2}&input3=${encodedInput3}&input4=${encodedInput4}`;
 
             // Use the fetch API to send a GET request
             fetch(url)
