@@ -18,10 +18,10 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 
 public class Main {
-	//public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
+	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException, CertificateException {
         System.out.println("Started");
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             System.out.println("Received");
             Headers headers = exchange.getResponseHeaders();
