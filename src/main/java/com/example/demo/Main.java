@@ -26,7 +26,8 @@ public class Main {
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
             os.write(Files.readAllBytes(new File("classes/static/home.html").toPath()));
-        } catch (Exception e) {}}));
+        } catch (Exception e) {e.printStackTrace();}
+            System.out.println("Sent");}));
         server.start();
         System.out.println("Server Started");
         Thread.sleep(10000);
