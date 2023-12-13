@@ -21,11 +21,12 @@ public class Main {
         HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             System.out.println("Received");
+
             Headers headers = exchange.getResponseHeaders();
             headers.set("Content-Type", "text/html");
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
-            os.write(Files.readAllBytes(new File("classes/static/home.html").toPath()));
+            os.write(Files.readAllBytes(new File("testing/classes/static/home.html").toPath()));
         } catch (Exception e) {e.printStackTrace();}
             System.out.println("Sent");}));
         server.start();
