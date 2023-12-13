@@ -47,10 +47,8 @@ public class Main {
         } catch (Exception e) {e.printStackTrace();}}));
 
         server.createContext("/api",(exchange->{
-			System.out.println("f1");
             exchange.getResponseHeaders().set("Content-Type", "text/plain");
 			Map<String, String> queryParams = getQueryParams(exchange.getRequestURI().getQuery());
-			System.out.println("f2");
 			String response = "";
 			for (Map.Entry<String, String> entry : queryParams.entrySet()){
 				try {
@@ -59,12 +57,10 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("f3");
         	exchange.sendResponseHeaders(200, 0);
         		try (OutputStream os = exchange.getResponseBody()) {
             		os.write(response.getBytes());
-        } catch (Exception e) {e.printStackTrace();}
-			System.out.println("f4");}));
+        } catch (Exception e) {e.printStackTrace();}}));
         server.start();
         Thread.sleep(30000);
         System.out.println("Killed");
@@ -85,7 +81,7 @@ public class Main {
 			String sqlQuery = "SELECT * FROM classes WHERE classname = '"+matcher+"'";
 			try (ResultSet resultSet = statement.executeQuery(sqlQuery)) {
 				resultSet.next();
-				return resultSet.getString("crn")+resultSet.getString("classname")+resultSet.getString("begin")+resultSet.getString("ending");
+				return resultSet.getString("crn")+','+resultSet.getString("classname")+','+resultSet.getString("begin")+','+resultSet.getString("ending");
 			}
 		} catch (SQLException e) {e.printStackTrace(); throw e;}
 	}

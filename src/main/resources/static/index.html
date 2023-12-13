@@ -36,10 +36,11 @@
 
     <!-- Button to Trigger Action -->
     <button onclick="sendGetRequest()">Process Inputs</button>
-
-    <!-- Output Field (Read-only) -->
-    <label for="output">Output:</label>
-    <input class="output" type="text" id="output" readonly>
+    <br>
+    <output id="output1"></output>
+    <output id="output2"></output>
+    <output id="output3"></output>
+    <output id="output4"></output>
 
     <!-- JavaScript to Process Inputs -->
     <script>
@@ -63,7 +64,11 @@
                 .then(response => response.text())
                 .then(data => {
                     // Display the response in the output field
-                    document.getElementById('output').value = data;
+                    var temp = data.split(",");
+                    document.getElementById('output1').value = temp[0];
+                    document.getElementById('output2').value = temp[1];
+                    document.getElementById('output3').value = temp[2];
+                    document.getElementById('output4').value = temp[3];
                 })
                 .catch(error => {
                     console.error('Error:', error);
