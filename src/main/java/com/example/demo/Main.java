@@ -47,6 +47,7 @@ public class Main {
         } catch (Exception e) {e.printStackTrace();}}));
 
         server.createContext("/api",(exchange->{
+			System.out.println("rare debug flag");
             exchange.getResponseHeaders().set("Content-Type", "text/plain");
 			exchange.getRequestHeaders();
 			Map<String, String> queryParams = getQueryParams(exchange.getRequestURI().getQuery());
