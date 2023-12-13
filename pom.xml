@@ -32,6 +32,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+                	<groupId>org.postgresql</groupId>
+                	<artifactId>postgresql</artifactId>
+                	<version>42.7.1</version>
+            	</dependency>
 	</dependencies>
 
 	<build>
@@ -49,3 +54,4 @@
 	</build>
 
 </project>
+        

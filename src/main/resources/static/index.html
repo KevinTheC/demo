@@ -1,6 +1,68 @@
-<HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
 <body>
-    <button id="myButton">Text</button>
-    <script type = "text/javascript" src = "js";></script>
+
+    <!-- Input Fields -->
+    <label for="input1">Class 1:</label>
+    <input type="text" id="input1" placeholder="Enter value for Input 1">
+
+    <label for="input2">Class 2:</label>
+    <input type="text" id="input2" placeholder="Enter value for Input 2">
+
+    <label for="input3">Class 3:</label>
+    <input type="text" id="input3" placeholder="Enter value for Input 3">
+
+    <label for="input4">Class 4:</label>
+    <input type="text" id="input4" placeholder="Enter value for Input 4">
+
+    <!-- Button to Trigger Action -->
+    <button onclick="sendGetRequest()">Process Inputs</button>
+
+    <!-- Output Field (Read-only) -->
+    <label for="output">Output:</label>
+    <input type="text" id="output" readonly>
+
+    <!-- JavaScript to Process Inputs -->
+    <script>
+        function sendGetRequest() {
+            // Get values from input fields
+            var input1 = encodeURIComponent(document.getElementById('input1').value);
+            var input2 = encodeURIComponent(document.getElementById('input2').value);
+            var input3 = encodeURIComponent(document.getElementById('input3').value);
+            var input4 = encodeURIComponent(document.getElementById('input4').value);
+
+            // Construct the URL with query parameters
+            var url = `http://myapplicationforsccc-32aa1e96762d.herokuapp.com/api?input1=${input1}&input2=${input2}&input3=${input3}&input4=${input4}`;
+
+            // Use the fetch API to send a GET request
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    // Display the response in the output field
+                    document.getElementById('output').value = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('output').value = 'Error occurred while fetching data.';
+                });
+        }
+    </script>
+
 </body>
-</HTML>
+</html>
