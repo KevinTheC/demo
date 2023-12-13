@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import com.sun.net.httpserver.*;
 
 public class Main {
-	public static final int portNumber = 8080;
+	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Started");
         HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
