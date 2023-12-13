@@ -63,7 +63,7 @@ public class Main {
             		os.write(response.getBytes());
         } catch (Exception e) {e.printStackTrace();}}));
         server.start();
-        Thread.sleep(10000);
+        Thread.sleep(30000);
         System.out.println("Killed");
         System.exit(1337);
 	}
