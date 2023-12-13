@@ -12,7 +12,7 @@ public class Main {
 	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Started");
-        HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
+        HttpsServer server = HttpsServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             System.out.println("Received");
         	exchange.sendResponseHeaders(200, 0);
