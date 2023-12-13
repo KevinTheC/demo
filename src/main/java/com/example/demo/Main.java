@@ -18,7 +18,6 @@ public class Main {
 	public static final int portNumber = Integer.parseInt(System.getenv("PORT"));
 	public static void main(String[] args) throws IOException, InterruptedException, KeyStoreException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyManagementException, CertificateException {
         System.out.println("Started");
-        Directory
         HttpServer server = HttpServer.create(new InetSocketAddress(portNumber), 0);
         server.createContext("/home",(exchange->{
             System.out.println("Received");
