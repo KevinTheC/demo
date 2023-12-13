@@ -46,6 +46,28 @@ public class Main {
             os.write(Files.readAllBytes(new File("src/main/resources/static/index.html").toPath()));
         } catch (Exception e) {e.printStackTrace();}}));
 
+		server.createContext("/proj1.png",(exchange->{
+			Headers headers = exchange.getResponseHeaders();
+			headers.set("Content-Type", "image/png");
+			exchange.sendResponseHeaders(200, 0);
+			try (OutputStream os = exchange.getResponseBody()) {
+				os.write(Files.readAllBytes(new File("src/main/resources/static/proj1.png").toPath()));
+			} catch (Exception e) {e.printStackTrace();}}));
+		server.createContext("/proj2.png",(exchange->{
+			Headers headers = exchange.getResponseHeaders();
+			headers.set("Content-Type", "image/png");
+			exchange.sendResponseHeaders(200, 0);
+			try (OutputStream os = exchange.getResponseBody()) {
+				os.write(Files.readAllBytes(new File("src/main/resources/static/proj2.png").toPath()));
+			} catch (Exception e) {e.printStackTrace();}}));
+		server.createContext("/proj3.png",(exchange->{
+			Headers headers = exchange.getResponseHeaders();
+			headers.set("Content-Type", "image/png");
+			exchange.sendResponseHeaders(200, 0);
+			try (OutputStream os = exchange.getResponseBody()) {
+				os.write(Files.readAllBytes(new File("src/main/resources/static/proj3.png").toPath()));
+			} catch (Exception e) {e.printStackTrace();}}));
+
         server.createContext("/api",(exchange->{
             exchange.getResponseHeaders().set("Content-Type", "text/plain");
 			Map<String, String> queryParams = getQueryParams(exchange.getRequestURI().getQuery());
