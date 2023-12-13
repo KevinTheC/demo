@@ -1,0 +1,91 @@
+<html class = "stretchMax" lang="en">
+	<head>
+		<script>
+
+		</script>
+		<style>
+			.myGrid{
+				display: grid;
+				gap: 10px;
+			}
+			.layerBottom{
+				grid-column: 1 / span 1;
+				grid-row: 1 / span 1;
+				z-index: -1;
+			}
+			.warmGradient{
+				background-color: #4158D0;
+				min-height: 100vh;
+				background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+			}
+			.stretchMax{
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				min-height: 100%;
+			}
+			.tempstyle1{
+				background-color: #401b3c;
+				text-align: center;
+				margin: 10;
+			}
+			.centeredDiv{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 10;
+				height: 200px;
+				border: 4px, solid, black;
+			}
+			.centeredList{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: left;
+			}
+			.myFont *{
+				font-family:'Courier New', Courier, monospace;
+				color: white;
+			}
+		</style>
+	</head>
+	<body class = "warmGradient myGrid">
+		<div class = "layerBottom centeredDiv myFont">
+			<div class = "tempstyle1" style = "width: 33%;">
+				<h1>Kevin Culkin</h1>
+				<h3>Aspiring Software Engineer</h3>
+			</div>
+			<div class = "tempstyle1" style = "width: 50%;">
+				<p>I'm a 3rd year student, currently transferring into a bachelor's program. My interests are embedded programming and graphics programming.</p>
+			</div>
+			<div class = "tempstyle1" style = "width: 90%; flex-direction: column;">
+				<div>
+					<img src = "proj1.png">
+					<h4>Designed to automatically build schedules for college faculties.<br>Currently working on allowing clients to make their own business logic.</h4>
+				</div>
+				<div>
+					<img src = "proj2.png">
+					<h4>Building a lightweight model designer. Work in progress.</h4>
+				</div>
+				<div>
+					<img src = "proj3.png">
+					<h4>Schedule builder for students. Work in progress.</h4>
+				</div>
+			</div>
+			<div class = "tempstyle1" style = "width: 90%; flex-direction: column;">
+				<h1>Technologies</h1>
+				<h2>Intermediate</h2>
+				<ul class = "centeredList">
+					<li>C++</li>
+					<li>Java</li>
+				</ul>
+				<h2>Beginner</h2>
+				<ul class = "centeredList">
+					<li>Javascript</li>
+					<li>OpenGL</li>
+					<li>C</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
