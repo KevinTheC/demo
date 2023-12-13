@@ -20,9 +20,10 @@ public class Main {
             os.write(Files.readAllBytes(new File("home.html").toPath()));
             System.out.println("Exchanged");
         }}));
-        server.createContext("/scheduleBuilder",new HomepageHandler());
         server.start();
+        System.out.println("Server Started");
         Thread.sleep(10000);
+        System.out.println("Killed");
         System.exit(1337);
 	}
 }
